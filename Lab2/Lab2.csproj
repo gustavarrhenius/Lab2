@@ -177,9 +177,6 @@
     <Content Include="Views\Forums\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Forums\CreatePost.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Forums\Thread.cshtml" />
   </ItemGroup>
   <ItemGroup>
