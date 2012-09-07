@@ -1,0 +1,12 @@
+﻿@model Lab2.Models.Entities.ForumThread
+
+    <tr>
+        <td>
+            @Html.ActionLink(Html.DisplayFor(t => t.Title).ToString(), "Thread", "Forums", new { id = Model.ID }, null)
+        </td>
+        <td>
+            @Html.DisplayFor(t => t.CreateDate)
+        </td>
+    </tr>
+
+    

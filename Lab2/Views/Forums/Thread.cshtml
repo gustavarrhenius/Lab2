@@ -1,0 +1,48 @@
+﻿@model Lab2.ViewModels.ThreadViewModel
+@using Lab2.Models.SessionManager
+@using Lab2.Models.Entities
+@{
+    ViewBag.Title = "Thread";
+    ViewBag.Thread = Model.Thread.ID;
+    List<User> users = ViewBag.Users;
+}
+<p> 
+
+</p>
+<h1>@Html.LabelFor(t => t.Thread, "Thread Title"): @Html.DisplayFor(t => t.Thread.Title)</h1>
+
+<table>
+<thead>
+        <tr>
+            <th>
+                @Html.LabelFor(p => p.Posts, "Title")
+            </th>
+            <th>
+                @Html.LabelFor(p => p.Posts, "Created")
+            </th>
+            <th>
+                @Html.LabelFor(p => p.Posts, "Message")
+            </th>
+        </tr>
+    </thead>
+@foreach (var post in Model.Posts)
+{
+     <tr>
+        <td>
+            @Html.DisplayFor(p => post.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(p => post.CreateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(p => post.Body)
+        </td>
+    </tr>
+}
+</table>
+@Html.HiddenFor(t => t.Thread.ID, new { Value = Model.Thread.ID })
+ @if (SessionManager.CurrentUser != null && SessionManager.CurrentUser.userstatus == Lab2.Models.Entities.User.UserStatus.Active) {
+<p>
+        @Html.Partial("_CreatePostPartial", Model.post) 
+</p>
+} 

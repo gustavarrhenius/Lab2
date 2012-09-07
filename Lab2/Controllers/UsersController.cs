@@ -33,6 +33,7 @@ namespace Lab2.Controllers
             return View(vm);
         }
 
+
         //
         // GET: /Create/
         public ActionResult Create()
@@ -61,6 +62,21 @@ namespace Lab2.Controllers
             }
 
             return View();
+        }
+
+        // GET: /Details/
+        public ActionResult Status(string id)
+        {
+            if (SessionManager.CurrentUser == null ||
+                SessionManager.CurrentUser.Type != Models.Entities.User.UserType.Admin)
+                return RedirectToAction("Index", "Users");
+            User user = Repository.Instance.GetUserByUserName(id);
+            if (user.userstatus == Models.Entities.User.UserStatus.Active) {
+                user.userstatus = Models.Entities.User.UserStatus.Banned;
+            } else {
+                user.userstatus = Models.Entities.User.UserStatus.Active;
+            }
+            return View(user);
         }
     }
 }

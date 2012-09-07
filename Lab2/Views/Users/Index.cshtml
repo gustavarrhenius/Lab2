@@ -32,7 +32,16 @@
         </td>
         <td>
             @user.FullName
+        </td> 
+        @if (SessionManager.CurrentUser != null && SessionManager.CurrentUser.Type == Lab2.Models.Entities.User.UserType.Admin) { 
+        <td>
+             @if (user.userstatus == Lab2.Models.Entities.User.UserStatus.Active) {
+                @Html.ActionLink("Bann User", "Status", "Users", new {id = user.UserName }, null)
+             } else {
+                 @Html.ActionLink("Activate User", "Status", "Users", new { id = user.UserName }, null)
+             }     
         </td>
+        }    
     </tr>
 }
 </table>

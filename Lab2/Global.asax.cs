@@ -29,6 +29,13 @@ namespace Lab2
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
+            routes.MapRoute(
+                "Forums", // Route name
+                "{controller}/{action}/{id}", // URL with parameters
+                new { controller = "Forums", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+            );
+
+
         }
 
         protected void Application_Start()

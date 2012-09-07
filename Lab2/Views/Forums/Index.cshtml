@@ -1,0 +1,25 @@
+﻿@using Lab2.Models.SessionManager
+@model Lab2.ViewModels.ThreadViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table>
+    <thead>
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Date
+                </th>
+            </tr>
+ </thead>
+@Html.DisplayFor(t => t.Threads)
+</table>
+ @if (SessionManager.CurrentUser != null && SessionManager.CurrentUser.userstatus == Lab2.Models.Entities.User.UserStatus.Active) {
+<p>
+        @Html.Partial("_CreatePostPartial", Model.post) 
+</p>
+}    

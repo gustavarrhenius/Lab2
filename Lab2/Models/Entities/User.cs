@@ -17,6 +17,7 @@ namespace Lab2.Models.Entities
             ID = Guid.NewGuid();
             UserName = name;
             Type = type;
+            userstatus = UserStatus.Active;
         }
 
         public Guid ID { get; set; }
@@ -52,6 +53,7 @@ namespace Lab2.Models.Entities
         }
 
         public UserType Type { get; set; }
+        public UserStatus userstatus { get; set; }
 
         public string ToString(bool ShortFormat = true)
         {
@@ -75,6 +77,11 @@ namespace Lab2.Models.Entities
             User,
             Admin,
             SuperUser
+        }
+        public enum UserStatus
+        {
+            Active,
+            Banned
         }
     }
 }
